@@ -1,0 +1,564 @@
+--Make sure you replace PATH with your own path to the file 
+
+CREATE TABLE AllstarFull (
+    playerID VARCHAR(10),
+    yearID INT,
+    gameNum INT,
+    gameID VARCHAR(12),
+    teamID VARCHAR(5),
+    lgID VARCHAR(2),
+    GP INT,
+    startingPos INT
+);
+
+CREATE TABLE Appearances (
+    yearID INT,
+    teamID VARCHAR(5),
+    lgID VARCHAR(2),
+    playerID VARCHAR(10),
+    G_all INT,
+    GS INT,
+    G_batting INT,
+    G_defense INT,
+    G_p INT,
+    G_c INT,
+    G_1b INT,
+    G_2b INT,
+    G_3b INT,
+    G_ss INT,
+    G_lf INT,
+    G_cf INT,
+    G_rf INT,
+    G_of INT,
+    G_dh INT,
+    G_ph INT,
+    G_pr INT
+);
+
+CREATE TABLE AwardsManagers (
+    playerID VARCHAR(10),
+    awardID VARCHAR(50),
+    yearID INT,
+    lgID VARCHAR(2),
+    tie VARCHAR(1),
+    notes TEXT
+);
+
+CREATE TABLE AwardsPlayers (
+    playerID VARCHAR(10),
+    awardID VARCHAR(50),
+    yearID INT,
+    lgID VARCHAR(2),
+    tie VARCHAR(1),
+    notes TEXT
+);
+
+CREATE TABLE AwardsShareManagers (
+    awardID VARCHAR(50),
+    yearID INT,
+    lgID VARCHAR(2),
+    playerID VARCHAR(10),
+    pointsWon FLOAT,
+    pointsMax FLOAT,
+    votesFirst FLOAT
+);
+
+CREATE TABLE AwardsSharePlayers (
+    awardID VARCHAR(50),
+    yearID INT,
+    lgID VARCHAR(2),
+    playerID VARCHAR(10),
+    pointsWon FLOAT,
+    pointsMax FLOAT,
+    votesFirst FLOAT
+);
+
+CREATE TABLE Batting (
+    playerID VARCHAR(10),
+    yearID INT,
+    stint INT,
+    teamID VARCHAR(5),
+    lgID VARCHAR(2),
+    G INT,
+    AB INT,
+    R INT,
+    H INT,
+    2B INT,
+    3B INT,
+    HR INT,
+    RBI INT,
+    SB INT,
+    CS INT,
+    BB INT,
+    SO INT,
+    IBB INT,
+    HBP INT,
+    SH INT,
+    SF INT,
+    GIDP INT
+);
+
+CREATE TABLE BattingPost (
+    yearID INT,
+    round VARCHAR(10),
+    playerID VARCHAR(10),
+    teamID VARCHAR(5),
+    lgID VARCHAR(2),
+    G INT,
+    AB INT,
+    R INT,
+    H INT,
+    2B INT,
+    3B INT,
+    HR INT,
+    RBI INT,
+    SB INT,
+    CS INT,
+    BB INT,
+    SO INT,
+    IBB INT,
+    HBP INT,
+    SH INT,
+    SF INT,
+    GIDP INT
+);
+
+CREATE TABLE CollegePlaying (
+    playerID VARCHAR(10),
+    schoolID VARCHAR(50),
+    yearID INT
+);
+
+CREATE TABLE Fielding (
+    playerID VARCHAR(10),
+    yearID INT,
+    stint INT,
+    teamID VARCHAR(5),
+    lgID VARCHAR(2),
+    POS VARCHAR(2),
+    G INT,
+    GS INT,
+    InnOuts INT,
+    PO INT,
+    A INT,
+    E INT,
+    DP INT,
+    PB INT,
+    WP INT,
+    SB INT,
+    CS INT,
+    ZR FLOAT
+);
+
+CREATE TABLE FieldingOF (
+    playerID VARCHAR(10),
+    yearID INT,
+    stint INT,
+    teamID VARCHAR(5),
+    lgID VARCHAR(2),
+    POS VARCHAR(2),
+    G INT,
+    GS INT,
+    InnOuts INT,
+    PO INT,
+    A INT,
+    E INT,
+    DP INT
+);
+
+CREATE TABLE FieldingOFsplit (
+    playerID VARCHAR(10),
+    yearID INT,
+    stint INT,
+    teamID VARCHAR(5),
+    lgID VARCHAR(2),
+    POS VARCHAR(2),
+    G INT,
+    GS INT,
+    InnOuts INT,
+    PO INT,
+    A INT,
+    E INT,
+    DP INT
+);
+
+CREATE TABLE FieldingPost (
+    playerID VARCHAR(10),
+    yearID INT,
+    teamID VARCHAR(5),
+    lgID VARCHAR(2),
+    round VARCHAR(10),
+    POS VARCHAR(2),
+    G INT,
+    GS INT,
+    InnOuts INT,
+    PO INT,
+    A INT,
+    E INT,
+    DP INT,
+    TP INT,
+    PB INT,
+    SB INT,
+    CS INT
+);
+
+CREATE TABLE HallOfFame (
+    playerID VARCHAR(10),
+    yearID INT,
+    votedBy VARCHAR(50),
+    ballots INT,
+    needed INT,
+    votes INT,
+    inducted VARCHAR(1),
+    category VARCHAR(20),
+    needed_note VARCHAR(50)
+);
+
+CREATE TABLE HomeGames (
+    yearID INT,
+    league VARCHAR(5),
+    teamID VARCHAR(5),
+    parkID VARCHAR(10),
+    spanFirst DATE,
+    spanLast DATE,
+    games INT,
+    openings INT,
+    attendance BIGINT
+);
+
+CREATE TABLE Managers (
+    playerID VARCHAR(10),
+    yearID INT,
+    teamID VARCHAR(5),
+    lgID VARCHAR(2),
+    inseason INT,
+    G INT,
+    W INT,
+    L INT,
+    rnk INT,
+    plyrMgr VARCHAR(1)
+);
+
+CREATE TABLE ManagersHalf (
+    playerID VARCHAR(10),
+    yearID INT,
+    teamID VARCHAR(5),
+    lgID VARCHAR(2),
+    half INT,
+    G INT,
+    W INT,
+    L INT,
+    rnk INT
+);
+
+CREATE TABLE Parks (
+    parkID VARCHAR(10),
+    park_name VARCHAR(100),
+    park_alias VARCHAR(100),
+    city VARCHAR(50),
+    state VARCHAR(50),
+    country VARCHAR(50)
+);
+
+CREATE TABLE People (
+    playerID VARCHAR(10),
+    birthYear INT,
+    birthMonth INT,
+    birthDay INT,
+    birthCountry VARCHAR(50),
+    birthState VARCHAR(50),
+    birthCity VARCHAR(50),
+    deathYear INT,
+    deathMonth INT,
+    deathDay INT,
+    deathCountry VARCHAR(50),
+    deathState VARCHAR(50),
+    deathCity VARCHAR(50),
+    nameFirst VARCHAR(50),
+    nameLast VARCHAR(50),
+    nameGiven VARCHAR(100),
+    weight INT,
+    height INT,
+    bats VARCHAR(1),
+    throws VARCHAR(1),
+    debut DATE,
+    finalGame DATE,
+    retroID VARCHAR(10),
+    bbrefID VARCHAR(10)
+);
+
+CREATE TABLE Pitching (
+    playerID VARCHAR(10),
+    yearID INT,
+    stint INT,
+    teamID VARCHAR(5),
+    lgID VARCHAR(2),
+    W INT,
+    L INT,
+    G INT,
+    GS INT,
+    CG INT,
+    SHO INT,
+    SV INT,
+    IPouts INT,
+    H INT,
+    ER INT,
+    HR INT,
+    BB INT,
+    SO INT,
+    IBB INT,
+    WP INT,
+    HBP INT,
+    BK INT,
+    BFP INT,
+    GF INT,
+    R INT,
+    SH INT,
+    SF INT,
+    GIDP INT
+);
+
+CREATE TABLE PitchingPost (
+    playerID VARCHAR(10),
+    yearID INT,
+    round VARCHAR(10),
+    teamID VARCHAR(5),
+    lgID VARCHAR(2),
+    W INT,
+    L INT,
+    G INT,
+    GS INT,
+    CG INT,
+    SHO INT,
+    SV INT,
+    IPouts INT,
+    H INT,
+    ER INT,
+    HR INT,
+    BB INT,
+    SO INT,
+    IBB INT,
+    WP INT,
+    HBP INT,
+    BK INT,
+    BFP INT,
+    GF INT,
+    R INT,
+    SH INT,
+    SF INT,
+    GIDP INT
+);
+
+CREATE TABLE Salaries (
+    yearID INT,
+    teamID VARCHAR(5),
+    lgID VARCHAR(2),
+    playerID VARCHAR(10),
+    salary BIGINT
+);
+
+CREATE TABLE Schools (
+    schoolID VARCHAR(50),
+    name_full VARCHAR(100),
+    city VARCHAR(50),
+    state VARCHAR(50),
+    country VARCHAR(50)
+);
+
+CREATE TABLE SeriesPost (
+    yearID INT,
+    round VARCHAR(10),
+    teamIDwinner VARCHAR(5),
+    lgIDwinner VARCHAR(2),
+    teamIDloser VARCHAR(5),
+    lgIDloser VARCHAR(2),
+    wins INT,
+    losses INT,
+    ties INT
+);
+
+CREATE TABLE Teams (
+    yearID INT,
+    lgID VARCHAR(2),
+    teamID VARCHAR(5),
+    franchID VARCHAR(5),
+    divID VARCHAR(2),
+    Rnk INT,
+    G INT,
+    Ghome INT,
+    W INT,
+    L INT,
+    DivWin VARCHAR(1),
+    WCWin VARCHAR(1),
+    LgWin VARCHAR(1),
+    WSWin VARCHAR(1),
+    R INT,
+    AB INT,
+    H INT,
+    2B INT,
+    3B INT,
+    HR INT,
+    BB INT,
+    SO INT,
+    SB INT,
+    CS INT,
+    HBP INT,
+    SF INT,
+    RA INT,
+    ER INT,
+    ERA FLOAT,
+    CG INT,
+    SHO INT,
+    SV INT,
+    IPouts INT,
+    HA INT,
+    HRA INT,
+    BBA INT,
+    SOA INT,
+    E INT,
+    DP INT,
+    FP FLOAT,
+    name VARCHAR(50),
+    park VARCHAR(50),
+    attendance BIGINT,
+    BPF INT,
+    PPF INT,
+    teamIDBR VARCHAR(5),
+    teamIDlahman45 VARCHAR(5),
+    teamIDretro VARCHAR(5)
+);
+
+CREATE TABLE TeamsFranchises (
+    franchID VARCHAR(5),
+    franchName VARCHAR(50),
+    active VARCHAR(1),
+    NAassoc VARCHAR(5)
+);
+
+CREATE TABLE TeamsHalf (
+    yearID INT,
+    lgID VARCHAR(2),
+    teamID VARCHAR(5),
+    Half INT,
+    divID VARCHAR(2),
+    DivWin VARCHAR(1),
+    Rnk INT,
+    G INT,
+    W INT,
+    L INT
+);
+
+SET GLOBAL local_infile = 1;
+USE baseball_2025;
+
+LOAD DATA LOCAL INFILE 'PATH/AllstarFull.csv'
+INTO TABLE AllstarFull
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/Appearances.csv'
+INTO TABLE Appearances
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/AwardsManagers.csv'
+INTO TABLE AwardsManagers
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/AwardsPlayers.csv'
+INTO TABLE AwardsPlayers
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/AwardsShareManagers.csv'
+INTO TABLE AwardsShareManagers
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/AwardsSharePlayers.csv'
+INTO TABLE AwardsSharePlayers
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/Batting.csv'
+INTO TABLE Batting
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/BattingPost.csv'
+INTO TABLE BattingPost
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/CollegePlaying.csv'
+INTO TABLE CollegePlaying
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/Fielding.csv'
+INTO TABLE Fielding
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/FieldingOF.csv'
+INTO TABLE FieldingOF
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/FieldingOFsplit.csv'
+INTO TABLE FieldingOFsplit
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/FieldingPost.csv'
+INTO TABLE FieldingPost
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/HallOfFame.csv'
+INTO TABLE HallOfFame
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/HomeGames.csv'
+INTO TABLE HomeGames
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/Managers.csv'
+INTO TABLE Managers
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/ManagersHalf.csv'
+INTO TABLE ManagersHalf
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/Parks.csv'
+INTO TABLE Parks
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/People.csv'
+INTO TABLE People
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/Pitching.csv'
+INTO TABLE Pitching
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/PitchingPost.csv'
+INTO TABLE PitchingPost
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/Salaries.csv'
+INTO TABLE Salaries
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/Schools.csv'
+INTO TABLE Schools
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/SeriesPost.csv'
+INTO TABLE SeriesPost
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/Teams.csv'
+INTO TABLE Teams
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/TeamsFranchises.csv'
+INTO TABLE TeamsFranchises
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE 'PATH/TeamsHalf.csv'
+INTO TABLE TeamsHalf
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 LINES;
+
+
+
+
