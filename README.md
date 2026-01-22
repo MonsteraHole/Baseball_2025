@@ -488,7 +488,54 @@ This baseball analytics portfolio project presents an interactive pitching dashb
 
 </details>
 
-# Data cleaning 
+
+# Table Cleanup
+  The player table showed column misalignment when the dataset was imported into MySQL, with things like names, birth information, and physical characteristics not matching their designated columns. In order to fix this, redundant identifiers and redundant reference columns were eliminated, and existing columns were carefully renamed to reflect their actual significance. A clear and understandable player table allows for better joins and makes for a cleaner data set 
+  
+![Dirty Table](dirtydata.PNG)
+![Clean Table](cleandata.PNG)
+
+
+<details>
+  <summary>Code</summary>
+ 
+  ```sql
+alter table baseball.player
+drop column holtz_id,
+drop column debut,
+drop column final_game,
+drop column college,
+drop column lahman_40_id,
+drop column lahman_45_id,
+drop column lahman_50_id,
+drop column lahman_55_id,
+drop column retro_id,
+drop column bbref_id,
+drop column birth_month,
+drop column birth_day,
+drop column death_month,
+drop column death_day,
+rename column manager_id to birthyear,
+rename column hof_id to birthmonth,
+rename column birth_year to birthday,
+rename column birth_country to city,
+rename column birth_state to deathyear,
+rename column death_state to first_name,
+rename column death_city to last_name,
+rename column name_first to leg_name,
+rename column name_last to weight,
+rename column name_note to height,
+rename column name_given to bats,
+rename column name_nick to throws,
+rename column weight to debut,
+rename column height to final_game,
+rename column bats to idk1,
+rename column throws to idk2
+```
+</details>
+
+
+## Data cleaning 
 
 This data set contains many data points we do not want or need, such as different leagues. Since baseball is a sport where players are getting traded all the time, much of the data needs to be grouped by player and year to get an accurate representation of the season as a whole. Ive also taken the liberty of limiting results to the years 1920-2025. This data cleaning brought our unique rows from 128,598 to 90,972
 <details>
