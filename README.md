@@ -38,3 +38,8 @@ from e1
 where playerid not in (select playerid from pitching)
 ```
 </details>
+
+
+# Batters vs Pitchers 
+
+![Batters vs Pitchers](pitchervsbatter.PNG)
