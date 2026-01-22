@@ -137,6 +137,12 @@ group by str_user
 While differences in playing time and at-bats contribute to these results, flagged players show a notably larger increase in power-related metrics, particularly home runs. I used a filter of 500 at-bats, which is on par with most full-time players 
 
 
+# MLB Pitching Analysis Dashboard
+
+An interactive analytics dashboard exploring pitching trends across leagues and seasons (1990–2025). The project analyzes key performance metrics like home runs allowed, strikeouts vs. walks, saves, pitcher handedness, weight trends, and the relationship between hits and losses. Built to support exploratory analysis and data-driven insights through dynamic filters and visual storytelling.
+
+![Change](DB1.PNG)      ![Change](db2.PNG)
+
 # 🏟️Baseball through the Years🏟️ 
 ### What does the average season look like in each era
 I grouped batting seasons into decade-based eras (1910s–2000s) and calculated average offensive output per era, including at-bats, hits, home runs, RBIs, stolen bases, and walks. This approach provides a high-level view of how offensive production and style of play evolved, highlighting the long-term rise in home run hitting relative to earlier eras.
