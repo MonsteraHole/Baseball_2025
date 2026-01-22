@@ -8,6 +8,7 @@ This data set contains many data points we do not want or need, such as differen
   <summary>Code</summary>
  
   ```sql
+with e1 as(
 SELECT 
 	playerID,
     yearid,
@@ -29,7 +30,11 @@ SELECT
     sum(sf)	as sf,
     sum(gidp)	as gidp
 FROM baseball_2025.batting
-where lgid in ('NL', 'AL') and yearid > 1919
-group by playerid, yearID
+where lgid in ('NL', 'AL') and yearid > 1920
+group by playerid, yearID)
+
+select count(distinct playerID)
+from e1 
+where playerid not in (select playerid from pitching)
 ```
 </details>
