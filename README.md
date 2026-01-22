@@ -56,6 +56,46 @@ Key Findings
 
 I've always LOVED baseball, not only because I played it but also because of the stories and the memories I created. The "Steroid Era" is one of the most interesting and controversial eras in sports history. Hearing my dad speak about Mark McGwire and Jose Canseco makes me think how much the game has changed. This era shaped modern baseball analytics, league policy, and how we think about performance today. For these reasons, it deserves to be examined, remembered, and understood.
 
+<details>
+  <summary>Code</summary>
+ 
+  ```sql
+create table steroid_flag (
+	player_id varchar(20),
+    player_name varchar(20),
+    pos_plr int)
+INSERT INTO steroid_flag (player_id, player_name, pos_plr) VALUES
+('bondsba01', 'Barry Bonds', '1'),
+('boonebr01', 'Bret Boone', '1'),
+('caminke01', 'Ken Caminiti', '1'),
+('cansejo01', 'Jose Canseco', '1'),
+('dykstle01', 'Lenny Dykstra', '1'),
+('giambja01', 'Jason Giambi', '1'),
+('glaustr01', 'Troy Glaus', '1'),
+('gonzaju03', 'Juan Gonzalez', '1'),
+('joynewa01', 'Wally Joyner', '1'),
+('justida01', 'David Justice', '1'),
+('knoblch01', 'Chuck Knoblauch', '1'),
+('mcgwima01', 'Mark McGwire', '1'),
+('ordonma01', 'Magglio Ordonez', '1'),
+('ortizda01', 'David Ortiz', '1'),
+('palmera01', 'Rafael Palmeiro', '1'),
+('ramirma02', 'Manny Ramirez', '1'),
+('roberbr01', 'Brian Roberts', '1'),
+('rodrial01', 'Alex Rodriguez', '1'),
+('rodriiv01', 'Ivan Rodriguez', '1'),
+('santibe01', 'Benito Santiago', '1'),
+('sheffga01', 'Gary Sheffield', '1'),
+('sosasa01', 'Sammy Sosa', '1'),
+('tejadmi01', 'Miguel Tejada', '1'),
+('vaughmo01', 'Mo Vaughn', '1'),
+('gagneer01', 'Eric Gagne', '1'),
+('clemero02', 'Roger Clemens', '1'),
+('finlech01', 'Chuck Finley', '1'),
+('pettian01', 'Andy Pettitte', '1');
+```
+</details>
+
 ## 🐐💥⚾The GOATS🐐💥⚾
 
 ![Change](Goat_steroids.PNG)
