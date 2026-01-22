@@ -43,3 +43,10 @@ where playerid not in (select playerid from pitching)
 # Batters vs Pitchers 
 
 ![Batters vs Pitchers](pitchervsbatter.PNG)
+
+Pitchers were eliminated from the batting dataset to guarantee a clear comparison between position players and pitchers. This keeps pitchers with few offensive appearances from exaggerating the distribution of physical attributes and batter counts. Pitchers and hitters are therefore viewed as mutually exclusive roles. 
+
+Key Findings
+- Pitchers are slightly taller and heavier(on avg), as it increases ball speed
+- More batters batting left compared to throwing (better pitcher matchup)
+- ~9.0K pitchers vs ~7.7K batters Reflects higher pitcher turnover and shorter careers
