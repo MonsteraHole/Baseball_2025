@@ -1,5 +1,492 @@
 # Baseball_2025
-Updated/other skills
+This baseball analytics portfolio project presents an interactive pitching dashboard built using SQL, Power BI, and Excel to analyze MLB trends across multiple seasons. One of the biggest challenges in building baseball dashboards is the quality of the data. Baseball data is often messy, incomplete, inconsistently labeled, and spread across multiple tables. A significant portion of this project focused on data cleaning, validation, and transformation using SQL and Excel before modeling and visualization in Power BI. With these limitations in mind,the final dashboard shows clear, actionable insights. Demonstrates my ability to work with messy data and deliver meaningful analysis
+
+
+# Table Information         
+</details>
+
+  
+<details>
+  <summary>Table Names and Description</summary>
+        
+## all_star
+| Field       | Description |
+|------------ |-------------|
+| playerID    | Player ID code |
+| yearID      | Year |
+| gameNum     | Game number (0 if only one All-Star game played that year) |
+| gameID      | Retrosheet game ID |
+| teamID      | Team |
+| lgID        | League |
+| GP          | Played in game (1 = yes) |
+| startingPos | Starting position |
+
+
+## appearances
+| Field      | Description |
+|----------- |-------------|
+| yearID     | Year |
+| teamID     | Team |
+| lgID       | League |
+| playerID   | Player ID |
+| G_all      | Total games |
+| GS         | Games started |
+| G_batting  | Games batted |
+| G_defense  | Games on defense |
+| G_p        | As pitcher |
+| G_c        | As catcher |
+| G_1b       | As first baseman |
+| G_2b       | As second baseman |
+| G_3b       | As third baseman |
+| G_ss       | As shortstop |
+| G_lf       | As left fielder |
+| G_cf       | As center fielder |
+| G_rf       | As right fielder |
+| G_of       | As outfielder |
+| G_dh       | As designated hitter |
+| G_ph       | As pinch hitter |
+| G_pr       | As pinch runner |
+
+
+## batting
+| Field    | Description |
+|--------- |-------------|
+| playerID | Player ID |
+| yearID   | Year |
+| stint    | Player’s stint |
+| teamID   | Team |
+| lgID     | League |
+| G        | Games |
+| AB       | At bats |
+| R        | Runs |
+| H        | Hits |
+| 2B       | Doubles |
+| 3B       | Triples |
+| HR       | Home runs |
+| RBI      | Runs batted in |
+| SB       | Stolen bases |
+| CS       | Caught stealing |
+| BB       | Walks |
+| SO       | Strikeouts |
+| IBB      | Intentional walks |
+| HBP      | Hit by pitch |
+| SH       | Sacrifice hits |
+| SF       | Sacrifice flies |
+| GIDP     | Grounded into double plays |
+
+
+## batting_postseason
+| Field    | Description |
+|--------- |-------------|
+| yearID   | Year |
+| round    | Playoff round |
+| playerID | Player ID |
+| teamID   | Team |
+| lgID     | League |
+| G        | Games |
+| AB       | At bats |
+| R        | Runs |
+| H        | Hits |
+| 2B       | Doubles |
+| 3B       | Triples |
+| HR       | Home runs |
+| RBI      | Runs batted in |
+| SB       | Stolen bases |
+| CS       | Caught stealing |
+| BB       | Walks |
+| SO       | Strikeouts |
+| IBB      | Intentional walks |
+| HBP      | Hit by pitch |
+| SH       | Sacrifices |
+| SF       | Sacrifice flies |
+| GIDP     | Grounded into double plays |
+
+
+## college
+| Field    | Description |
+|--------- |-------------|
+| playerID | Player ID |
+| schoolID | School ID |
+| year     | College year played |
+
+
+## fielding
+| Field    | Description |
+|--------- |-------------|
+| playerID | Player ID |
+| yearID   | Year |
+| stint    | Player stint |
+| teamID   | Team |
+| lgID     | League |
+| Pos      | Position |
+| G        | Games |
+| GS       | Games started |
+| InnOuts  | Defensive outs played |
+| PO       | Putouts |
+| A        | Assists |
+| E        | Errors |
+| DP       | Double plays |
+| PB       | Passed balls |
+| WP       | Wild pitches |
+| SB       | Stolen bases allowed |
+| CS       | Caught stealing |
+| ZR       | Zone rating |
+
+
+## fielding_outfield
+| Field    | Description |
+|--------- |-------------|
+| playerID | Player ID |
+| yearID   | Year |
+| stint    | Stint |
+| Glf      | Games in left field |
+| Gcf      | Games in center field |
+| Grf      | Games in right field |
+
+
+## fielding_postseason
+| Field    | Description |
+|--------- |-------------|
+| playerID | Player ID |
+| yearID   | Year |
+| teamID   | Team |
+| lgID     | League |
+| round    | Playoff round |
+| Pos      | Position |
+| G        | Games |
+| GS       | Games started |
+| InnOuts  | Defensive outs |
+| PO       | Putouts |
+| A        | Assists |
+| E        | Errors |
+| DP       | Double plays |
+| TP       | Triple plays |
+| PB       | Passed balls |
+| SB       | Stolen bases allowed |
+| CS       | Caught stealing |
+
+
+## hall_of_fame
+| Field       | Description |
+|------------ |-------------|
+| playerID    | Player ID |
+| yearID      | Year |
+| votedBy     | Voting method |
+| ballots     | Ballots cast |
+| needed      | Votes needed |
+| votes       | Votes received |
+| inducted    | Inducted? (Y/N) |
+| category    | Category |
+| needed_note | Notes |
+
+
+## home_game
+| Field       | Description |
+|------------ |-------------|
+| year        | Year of season |
+| league_id   | League ID (e.g., AL, NL) |
+| team_id     | Team ID |
+| park_id     | Park ID where home games were played |
+| span_first  | Date of first home game |
+| span_last   | Date of last home game |
+| games       | Total home games played |
+| openings    | Number of scheduled openings (home dates) |
+| attendance  | Total home attendance |
+
+
+## manager
+| Field     | Description |
+|---------- |-------------|
+| playerID  | Manager ID |
+| yearID    | Year |
+| teamID    | Team |
+| lgID      | League |
+| inseason  | Manager order |
+| G         | Games managed |
+| W         | Wins |
+| L         | Losses |
+| rank      | Final rank |
+| plyrMgr   | Player-manager flag |
+
+
+## manager_award
+| Field    | Description |
+|--------- |-------------|
+| playerID | Manager ID |
+| awardID  | Award name |
+| yearID   | Year |
+| lgID     | League |
+| tie      | Tie? (Y/N) |
+| notes    | Notes |
+
+
+## manager_award_vote
+| Field      | Description |
+|----------- |-------------|
+| awardID    | Award |
+| yearID     | Year |
+| lgID       | League |
+| playerID   | Manager ID |
+| pointsWon  | Points received |
+| pointsMax  | Max possible points |
+| votesFirst | First-place votes |
+
+
+## manager_half
+| Field    | Description |
+|--------- |-------------|
+| playerID | Manager ID |
+| yearID   | Year |
+| teamID   | Team |
+| lgID     | League |
+| inseason | Manager order |
+| half     | First or second half |
+| G        | Games managed |
+| W        | Wins |
+| L        | Losses |
+| rank     | Rank in half |
+
+## park
+| Field     | Description |
+|---------- |-------------|
+| park_id   | Unique park identifier |
+| park_name | Full park name |
+| park_alias| Alternate / historical park name |
+| city      | City where the park is located |
+| state     | State where the park is located |
+| country   | Country |
+
+## pitching
+| Field    | Description |
+|--------- |-------------|
+| playerID | Player ID |
+| yearID   | Year |
+| stint    | Player stint |
+| teamID   | Team |
+| lgID     | League |
+| W        | Wins |
+| L        | Losses |
+| G        | Games |
+| GS       | Games started |
+| CG       | Complete games |
+| SHO      | Shutouts |
+| SV       | Saves |
+| IPOuts   | Outs pitched |
+| H        | Hits |
+| ER       | Earned runs |
+| HR       | HR allowed |
+| BB       | Walks |
+| SO       | Strikeouts |
+| BAOpp    | Opponent BA |
+| ERA      | ERA |
+| IBB      | Intentional walks |
+| WP       | Wild pitches |
+| HBP      | Hit batters |
+| BK       | Balks |
+| BFP      | Batters faced |
+| GF       | Games finished |
+| R        | Runs allowed |
+| SH       | Sacrifice hits allowed |
+| SF       | Sacrifice flies allowed |
+| GIDP     | Double plays induced |
+
+
+## pitching_postseason
+| Field    | Description |
+|--------- |-------------|
+| playerID | Player ID |
+| yearID   | Year |
+| round    | Playoff round |
+| teamID   | Team |
+| lgID     | League |
+| W        | Wins |
+| L        | Losses |
+| G        | Games |
+| GS       | Games started |
+| CG       | Complete games |
+| SHO      | Shutouts |
+| SV       | Saves |
+| IPOuts   | Outs pitched |
+| H        | Hits |
+| ER       | Earned runs |
+| HR       | HR allowed |
+| BB       | Walks |
+| SO       | Strikeouts |
+| BAOpp    | Opponent BA |
+| ERA      | ERA |
+| IBB      | Intentional walks |
+| WP       | Wild pitches |
+| HBP      | Hit batters |
+| BK       | Balks |
+| BFP      | Batters faced |
+| GF       | Games finished |
+| R        | Runs allowed |
+| SH       | Sacrifice hits |
+| SF       | Sacrifice flies |
+| GIDP     | Double plays induced |
+
+
+## player
+| Field        | Description |
+|------------- |-------------|
+| playerID     | Unique player ID |
+| birthYear    | Year born |
+| birthMonth   | Month born |
+| birthDay     | Day born |
+| birthCountry | Country born |
+| birthState   | State born |
+| birthCity    | City born |
+| deathYear    | Year died |
+| deathMonth   | Month died |
+| deathDay     | Day died |
+| deathCountry | Country died |
+| deathState   | State died |
+| deathCity    | City died |
+| nameFirst    | First name |
+| nameLast     | Last name |
+| nameGiven    | Given name |
+| weight       | Weight (lbs) |
+| height       | Height (inches) |
+| bats         | Bats (L/R/B) |
+| throws       | Throws (L/R) |
+| debut        | MLB debut date |
+| finalGame    | Final MLB game |
+| retroID      | Retrosheet ID |
+| bbrefID      | Baseball-Reference ID |
+
+
+## player_award
+| Field    | Description |
+|--------- |-------------|
+| playerID | Player ID |
+| awardID  | Name of award |
+| yearID   | Year |
+| lgID     | League |
+| tie      | Award tie? (Y/N) |
+| notes    | Notes |
+
+
+## player_award_vote
+| Field      | Description |
+|----------- |-------------|
+| awardID    | Award voted on |
+| yearID     | Year |
+| lgID       | League |
+| playerID   | Player ID |
+| pointsWon  | Points received |
+| pointsMax  | Maximum possible |
+| votesFirst | First-place votes |
+
+
+## player_college
+| Field    | Description |
+|--------- |-------------|
+| playerID | Player ID |
+| schoolID | School ID |
+| year     | Played year |
+
+
+## postseason
+| Field       | Description |
+|------------ |-------------|
+| yearID      | Year |
+| round       | Playoff round |
+| teamIDwinner| Winning team |
+| lgIDwinner  | Winning league |
+| teamIDloser | Losing team |
+| lgIDloser   | Losing league |
+| wins        | Wins in series |
+| losses      | Losses in series |
+| ties        | Tie games |
+
+
+## salary
+| Field    | Description |
+|--------- |-------------|
+| yearID   | Year |
+| teamID   | Team |
+| lgID     | League |
+| playerID | Player ID |
+| salary   | Salary |
+
+
+## team
+| Field           | Description |
+|---------------- |-------------|
+| yearID          | Year |
+| lgID            | League |
+| teamID          | Team |
+| franchID        | Franchise |
+| divID           | Division |
+| Rank            | Standings position |
+| G               | Games |
+| GHome           | Home games |
+| W               | Wins |
+| L               | Losses |
+| DivWin          | Division winner (Y/N) |
+| WCWin           | Wild card winner (Y/N) |
+| LgWin           | League champion (Y/N) |
+| WSWin           | World Series winner (Y/N) |
+| R               | Runs |
+| AB              | At bats |
+| H               | Hits |
+| 2B              | Doubles |
+| 3B              | Triples |
+| HR              | Home runs |
+| BB              | Walks |
+| SO              | Strikeouts |
+| SB              | Stolen bases |
+| CS              | Caught stealing |
+| HBP             | Hit by pitch |
+| SF              | Sacrifice flies |
+| RA              | Opponent runs |
+| ER              | Earned runs |
+| ERA             | ERA |
+| CG              | Complete games |
+| SHO             | Shutouts |
+| SV              | Saves |
+| IPOuts          | Outs pitched |
+| HA              | Hits allowed |
+| HRA             | Home runs allowed |
+| BBA             | Walks allowed |
+| SOA             | Pitcher strikeouts |
+| E               | Errors |
+| DP              | Double plays |
+| FP              | Fielding percentage |
+| name            | Team full name |
+| park            | Ballpark |
+| attendance      | Home attendance |
+| BPF             | Batting park factor |
+| PPF             | Pitching park factor |
+| teamIDBR        | Baseball-Reference ID |
+| teamIDlahman45  | Lahman 4.5 ID |
+| teamIDretro     | Retrosheet ID |
+
+
+## team_franchise
+| Field      | Description |
+|----------- |-------------|
+| franchID   | Franchise ID |
+| franchName | Franchise name |
+| active     | Active (Y/N) |
+| NAassoc    | National Association ID |
+
+
+## team_half
+| Field   | Description |
+|-------- |-------------|
+| yearID  | Year |
+| lgID    | League |
+| teamID  | Team |
+| half    | First or second half |
+| divID   | Division |
+| DivWin  | Division winner (Y/N) |
+| rank    | Standing |
+| G       | Games |
+| W       | Wins |
+| L       | Losses |
+
+</details>
 
 # Data cleaning 
 
@@ -182,7 +669,7 @@ select
 from e1 
 group by era
 ```
- 
+</details>
 
 # Team Regression 
 To explore the relationship between offensive production and team success, I ran a linear regression using historical team-level baseball data. The goal was to identify which offensive statistics are most closely associated with winning across full seasons.
@@ -193,7 +680,6 @@ Across all models, runs scored had a highly significant positive relationship wi
 - Hits alone do not drive wins Once run production was included, hits showed a small but statistically significant negative relationship with winning. This suggests that raw hit totals are less important than how efficiently those hits translate into runs.
   
 ![Dirty Table](baseballregression.PNG)
-
 <details>
   <summary>SQL Code</summary>
  
