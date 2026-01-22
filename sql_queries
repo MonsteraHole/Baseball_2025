@@ -1,0 +1,60 @@
+--Pitching table Clean 
+SELECT 
+	playerID,
+    yearid,
+    sum(W)      as "Wins",
+sum(L)      as "Losses",
+sum(G)      as "Games",
+sum(GS)     as "Games Started",
+sum(CG)     as "Complete Games",
+sum(SHO)    as "Shutouts",
+sum(SV)     as "Saves",
+sum(IPOuts) as "Outs Pitched",
+sum(H)      as "Hits",
+sum(ER)     as "Earned Runs",
+sum(HR)     as "Home Runs",
+sum(BB)     as "Walks",
+sum(SO)     as "Strikeouts",
+sum(IBB)    as "Intentional Walks",
+sum(WP)     as "Wild Pitches",
+sum(HBP)    as "Hit By Pitch",
+sum(BK)     as "Balks",
+sum(BFP)    as "Batters Faced",
+sum(GF)     as "Games Finished",
+sum(R)      as "Runs Allowed",
+sum(SH)     as "Sacrifice Hits Allowed",
+sum(SF)     as "Sacrifice Flies Allowed",
+sum(GIDP)   as "Grounded Into Double Plays"
+FROM baseball_2025.pitching
+where lgid in ('NL', 'AL') and yearid > 1920
+group by playerid, yearID
+
+--Batters table clean 
+with e1 as(
+SELECT 
+	playerID,
+    yearid,
+    sum(g)	as g,
+    sum(ab)	as ab,
+    sum(r)	as r,
+    sum(h)	as h,
+    sum(2b)	as 2b,
+    sum(3b)	as 3b,
+    sum(hr)	as hr,
+    sum(rbi) as rbi,
+    sum(sb)	as sb,
+    sum(cs)	as cs,
+    sum(bb)	as bb,
+    sum(so)	as so,
+    sum(ibb)	as ibb,
+    sum(hbp)	as hbp,
+    sum(sh)	as sh,
+    sum(sf)	as sf,
+    sum(gidp)	as gidp
+FROM baseball_2025.batting
+where lgid in ('NL', 'AL') and yearid > 1920
+group by playerid, yearID)
+
+select count(distinct playerID)
+from e1 
+where playerid not in (select playerid from pitching)
