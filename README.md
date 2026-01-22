@@ -139,7 +139,7 @@ While differences in playing time and at-bats contribute to these results, flagg
 
 # MLB Pitching Analysis Dashboard
 
-An interactive analytics dashboard exploring pitching trends across leagues and seasons (1990–2025). The project analyzes key performance metrics like home runs allowed, strikeouts vs. walks, saves, pitcher handedness, weight trends, and the relationship between hits and losses. Built to support exploratory analysis and data-driven insights through dynamic filters and visual storytelling.
+An interactive analytics dashboard exploring pitching trends across leagues and seasons. The project analyzes key performance metrics like home runs allowed, strikeouts vs. walks, saves, pitcher handedness, weight trends, and the relationship between hits and losses. Built to support exploratory analysis and data-driven insights through dynamic filters and visual storytelling.
 
 ![Change](DB1.PNG)      ![Change](db2.PNG)
 
